@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    function submitForm() {
+      document.getElementById('theform').submit();
+    }
+
+    window.onload = function() {
+      document.getElementById("player_name").focus();
+    }
+  </script>
+
+ <head>
+   <title>Player Search</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Search for player to add to watchlist</h2>
+         <form id="theform" action="/watchlist/search" method="GET">
+           <div class="form-group">
+             <label for="player_name">Player Name</label>
+             <input oninput="submitForm()" type="text" class="form-control col-lg-9" id="player_name" aria-describedby="emailHelp" placeholder="Enter Player Name" name="player_name">
+           </div>
+           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+         </form>
+   </div>
+
+
+   <div class="table-data">
+    <h2>My watchlist</h2>
+        <table border="1">
+            <tr>
+                <th>Player Name</th>
+                <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            
+            <%
+            if(userData.length!=0){
+            var i=1;
+            userData.forEach(function(data){
+            %>
+            <tr>
+                <td><%=data.Name %></td>
+                <td><%=data.Notes %></td>
+                <td><a href="/watchlist/player/edit/<%=data.Name%>">Edit</a></td>
+                <td><a href="/watchlist/player/delete/<%=data.Name%>">Delete</a></td>
+            </tr>
+            <%  i++; }) %>
+            <% } else{ %>
+                <tr>
+                    <td colspan="7">No Data Found</td>
+                </tr>
+            <% } %>
+        </table>
+        </div>
+
+        <br/>
+        <br/>
+
+
+ </div>
+
+
+
+ <div class="table-data">
+  <h2>Recommendations</h2>
+      <table border="1">
+          <tr>
+            <th>Player Name</th>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Avg Fantasy Points</th>
+            <th>Add</th>
+          </tr>
+          
+          <%
+          if(recsData.length!=0){
+          var i=1;
+          recsData.forEach(function(data){
+          %>
+          <tr>
+            <td><%=data.Player_Name %></td>
+            <td><%=data.Team %></td>
+            <td><%=data.Position %></td>
+            <td><%=data.Age %></td>
+            <td><%=data.Avg_Fantasy_Points %></td>
+            <td><a href="/watchlist/player/add/<%=data.Player_Name%>">Add</a></td>
+          </tr>
+          <%  i++; }) %>
+          <% } else{ %>
+              <tr>
+                  <td colspan="7">No Data Found</td>
+              </tr>
+          <% } %>
+      </table>
+      </div>
+
+      <br/>
+      <br/>
+      <div>
+          <form action="/watchlist" method="GET"> <button type="submit" class="btn btn-primary">Watchlist</button> </form>
+          <form action="/ppt" method="GET"> <button type="submit" class="btn btn-primary">Average Fantasy Points Per Team</button> </form>
+          <form action="/comp" method="GET"> <button type="submit" class="btn btn-primary">Top Players By Division</button> </form>
+      </div>
+
+</div>
+
+
+
+ </body>
+</html>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Top Players By Division</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+    <div class="table-data">
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Select Two Divisions</h2>
+
+                    <form action="/comp" method="GET">
+                        <div class="form-group">
+                            <label for="first_division">Choose a Division:</label>
+                            <select name="first_division" id="first_division">
+                                <option value="NFC North">NFC North</option>
+                                <option value="NFC East">NFC East</option>
+                                <option value="NFC South">NFC South</option>
+                                <option value="NFC West">NFC West</option>
+                                <option value="AFC North">AFC North</option>
+                                <option value="AFC East">AFC East</option>
+                                <option value="AFC South">AFC South</option>
+                                <option value="AFC West">AFC West</option>
+                            </select>
+                            <br/>
+                            
+                            <label for="second_division">Choose a second Division:</label>
+                            <select name="second_division" id="second_division">
+                                <option value="NFC North">NFC North</option>
+                                <option value="NFC East">NFC East</option>
+                                <option value="NFC South">NFC South</option>
+                                <option value="NFC West">NFC West</option>
+                                <option value="AFC North">AFC North</option>
+                                <option value="AFC East">AFC East</option>
+                                <option value="AFC South">AFC South</option>
+                                <option value="AFC West">AFC West</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                    <br/>
+                    <br/>
+                    <h2>Top Players By Division</h2>
+
+                    
+                    <table border="1">
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Team</th>
+                            <th>Division</th>
+                            <th>Avg Fantasy Points</th>
+                        </tr>
+                        
+                        <%
+                        if(userData.length!=0){
+                        var i=1;
+                        userData.forEach(function(data){
+                        %>
+                        <tr>
+                            <td><%=data.Player_Name %></td>
+                            <td><%=data.Team %></td>
+                            <td><%=data.Division %></td>
+                            <td><%=data.Avg_Fantasy_Points %></td>
+                        </tr>
+                        <%  i++; }) %>
+                        <% } else{ %>
+                            <tr>
+                                <td colspan="7">No Data Found</td>
+                            </tr>
+                        <% } %>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <div>
+        <form action="/watchlist" method="GET"> <button type="submit" class="btn btn-primary">Watchlist</button> </form>
+        <form action="/ppt" method="GET"> <button type="submit" class="btn btn-primary">Average Fantasy Points Per Team</button> </form>
+        <form action="/comp" method="GET"> <button type="submit" class="btn btn-primary">Top Players By Division</button> </form>
+    </div>
+
+</div>
+ </body>
+</html>
+

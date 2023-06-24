@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Player Notes Edit Page</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Edit notes for this player</h2>
+         <form action="mark/<%=userData.Name %>" method="POST">
+           <div class="form-group">
+             <label id="playerID" name="playerID" for="notes"> <%=userData.Name %> </label>
+             <input type="text" class="form-control col-lg-9" id="notes" aria-describedby="emailHelp" value=" <%=userData.Notes %> " name="notes">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+
+   <br/>
+   <br/>
+   <div>
+        <form action="/watchlist" method="GET"> <button type="submit" class="btn btn-primary">Watchlist</button> </form>
+        <form action="/ppt" method="GET"> <button type="submit" class="btn btn-primary">Average Fantasy Points Per Team</button> </form>
+        <form action="/comp" method="GET"> <button type="submit" class="btn btn-primary">Top Players By Division</button> </form>
+    </div>
+
+ </div>
+ </body>
+</html>
+

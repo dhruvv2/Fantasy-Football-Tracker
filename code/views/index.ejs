@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Player Search</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+     <div class="card">
+       <div class="card-body">
+         <h2>Search for player to add to watchlist</h2>
+         <form action="watchlist/mark" method="POST">
+           <div class="form-group">
+             <label for="player_name">Player Name</label>
+             <input type="text" class="form-control col-lg-9" id="player_name" aria-describedby="emailHelp" placeholder="Enter Player Name" name="player_name">
+           </div>
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+   </div>
+ </div>
+ </body>
+</html>
+

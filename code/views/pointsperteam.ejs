@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Points Per Team</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ </head>
+
+ <body>
+   <div class="container mt-4">
+        <div class="card">
+          <div class="card-body">
+    <div class="table-data">
+
+        
+        <h2>Average Fantasy Points per Team</h2>
+            <table border="1">
+                <tr>
+                    <th>Average Fantasy Points</th>
+                    <th>Team</th>
+                </tr>
+                
+                <%
+                if(userData.length!=0){
+                var i=1;
+                userData.forEach(function(data){
+                %>
+                <tr>
+                    <td><%=data.Average_Fantasy_Points %></td>
+                    <td><%=data.Team %></td>
+                </tr>
+                <%  i++; }) %>
+                <% } else{ %>
+                    <tr>
+                        <td colspan="7">No Data Found</td>
+                    </tr>
+                <% } %>
+            </table>
+            </div>
+
+            <br/>
+            <br/>
+            <div>
+                <form action="/watchlist" method="GET"> <button type="submit" class="btn btn-primary">Watchlist</button> </form>
+                <form action="/ppt" method="GET"> <button type="submit" class="btn btn-primary">Average Fantasy Points Per Team</button> </form>
+                <form action="/comp" method="GET"> <button type="submit" class="btn btn-primary">Top Players By Division</button> </form>
+            </div>
+
+    </div>
+</div>
+</div>
+ </body>
+</html>
+
